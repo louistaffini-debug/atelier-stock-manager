@@ -52,3 +52,31 @@ Cette version conserve le socle V1.0 avec Grist comme base officielle et ajoute 
 - conservation du mode secours Google Sheet avec `?source=sheet`.
 
 Cette version ne modifie pas le backend Apps Script.
+
+
+## V1.2.2 - Lecture du module Magasin / composants
+
+Ajout d'un premier module Magasin connecté à Grist en lecture seule.
+
+### Tables Grist utilisées
+
+- `Composants`
+- `MouvementsStock`
+- `CategoriesComposants`
+- `EmplacementsMagasin`
+- `Fournisseurs`
+
+### Pages ajoutées
+
+- `magasin.html`
+- `magasin.js`
+
+### Actions Apps Script ajoutées
+
+- `listComposantsGrist`
+- `listCategoriesComposantsGrist`
+- `listEmplacementsMagasinGrist`
+- `listFournisseursGrist`
+- `magasinHealthGrist`
+
+Cette version ne modifie pas encore le stock. Elle permet de vérifier que les tables magasin sont correctement créées et lisibles depuis l'application.

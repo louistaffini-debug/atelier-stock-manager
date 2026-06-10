@@ -2,9 +2,9 @@
 <html lang="fr">
 <head>
   <meta charset="utf-8">
-  <title>Atelier Stock Manager - V1.1 Hybride</title>
+  <title>Atelier Stock Manager - V1.2.2 Hybride</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="style.css?v=110">
+  <link rel="stylesheet" href="style.css?v=122">
 </head>
 
 <body class="app-shell">
@@ -20,6 +20,7 @@
     <nav class="side-nav">
       <a href="#atelierBoard" class="active">Atelier</a>
       <a href="#equipementsSection">Équipements</a>
+      <a href="magasin.html">Magasin</a>
       <a href="#historiqueSection">Historique</a>
       <a href="#adminSection">Administration</a>
       <a href="qrcodes.html">QR codes</a>
@@ -29,14 +30,14 @@
     <div class="sidebar-card">
       <span class="eyebrow">Module hybride</span>
       <strong>Atelier + Magasin</strong>
-      <p>La partie atelier est opérationnelle. La partie magasin est préparée visuellement pour une prochaine évolution.</p>
+      <p>La partie atelier est opérationnelle. Le module Magasin est maintenant connecté en lecture Grist.</p>
     </div>
   </aside>
 
   <main class="main-content">
     <header class="topbar no-print">
       <div>
-        <p class="eyebrow">V1.1 - refonte visuelle</p>
+        <p class="eyebrow">V1.2.2 - module magasin</p>
         <h1>Atelier Stock Manager</h1>
         <p class="subtitle">Interface hybride atelier / magasin - Grist officiel</p>
       </div>
@@ -53,7 +54,7 @@
       <div class="hero-copy">
         <span class="eyebrow">Base officielle</span>
         <h2>Gestion atelier mécanique</h2>
-        <p>Vue moderne inspirée d’un tableau métier : cartes visuelles, tableau dense, fiches QR et administration des référentiels.</p>
+        <p>Vue moderne inspirée d’un tableau métier : cartes visuelles, tableau dense, fiches QR, administration des référentiels et module Magasin.</p>
         <div class="mode-slot"></div>
       </div>
       <div class="pin-panel">
@@ -86,14 +87,14 @@
           <p class="eyebrow">Préparation</p>
           <h2>Magasin composants</h2>
         </div>
-        <span class="pill ghost">Module à connecter</span>
+        <a href="magasin.html"><button type="button" class="btn-primary">Ouvrir le magasin</button></a>
       </div>
       <div class="magasin-grid">
         <article class="stock-card preview-card"><div class="stock-image">CO</div><h3>Composants</h3><p>Quantités, seuil mini, fournisseur, QR code.</p></article>
         <article class="stock-card preview-card"><div class="stock-image">PR</div><h3>Profilés</h3><p>Bibliothèque d’éléments longs et références.</p></article>
         <article class="stock-card preview-card"><div class="stock-image">OU</div><h3>Outillage</h3><p>Stock, casiers, consommables, commandes.</p></article>
       </div>
-      <p class="small">Cette zone prépare l’option hybride sans modifier les données actuelles. La V1.1 garde Grist atelier comme base principale.</p>
+      <p class="small">Cette zone donne accès au module Magasin V1.2.2 connecté en lecture aux tables Grist Composants, Catégories, Emplacements magasin et Fournisseurs.</p>
     </section>
 
     <section class="card compact-card no-print">

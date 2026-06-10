@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Magasin composants - Atelier Stock Manager</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css?v=122">
+</head>
+
+<body class="app-shell">
+  <aside class="sidebar no-print">
+    <div class="brand-block">
+      <div class="brand-icon">ASM</div>
+      <div>
+        <strong>Atelier Stock</strong>
+        <span>Manager</span>
+      </div>
+    </div>
+
+    <nav class="side-nav">
+      <a href="index.html">Atelier</a>
+      <a href="magasin.html" class="active">Magasin</a>
+      <a href="qrcodes.html">QR codes</a>
+      <a href="diagnostic.html">Diagnostic</a>
+    </nav>
+
+    <div class="sidebar-card">
+      <span class="eyebrow">Module magasin</span>
+      <strong>Composants & stock</strong>
+      <p>Lecture Grist des composants, catégories, emplacements magasin et fournisseurs.</p>
+    </div>
+  </aside>
+
+  <main class="main-content">
+    <header class="topbar no-print">
+      <div>
+        <p class="eyebrow">V1.2.2 - lecture Grist</p>
+        <h1>Magasin composants</h1>
+        <p class="subtitle">Vue stock inspirée d’un tableau magasin : cartes, tableau dense, filtres et seuils.</p>
+      </div>
+      <div class="topbar-actions actions">
+        <button id="loadMagasinButton" class="btn-primary">Charger le magasin</button>
+        <a href="index.html"><button type="button" class="btn-secondary">Retour atelier</button></a>
+      </div>
+    </header>
+
+    <section class="hero-board">
+      <div class="hero-copy">
+        <span class="eyebrow">Base officielle</span>
+        <h2>Stock magasin atelier</h2>
+        <p>Cette première version lit les tables Grist du module Magasin. Les ajouts et mouvements de stock viendront dans une version suivante.</p>
+        <div class="mode-slot"><span class="pill">Grist lecture seule</span></div>
+      </div>
+      <div class="pin-panel">
+        <p id="magasinStatus">Statut : en attente</p>
+        <p class="small">Tables attendues : Composants, MouvementsStock, CategoriesComposants, EmplacementsMagasin, Fournisseurs.</p>
+      </div>
+    </section>
+
+    <section class="dashboard-grid" aria-label="Indicateurs magasin">
+      <article class="metric-card"><span>Total composants</span><strong id="metricComposants">0</strong><small>Références actives</small></article>
+      <article class="metric-card success"><span>En stock</span><strong id="metricEnStock">0</strong><small>Disponibles</small></article>
+      <article class="metric-card warning"><span>Stock faible</span><strong id="metricStockFaible">0</strong><small>À surveiller</small></article>
+      <article class="metric-card danger"><span>Rupture</span><strong id="metricRupture">0</strong><small>À commander</small></article>
+      <article class="metric-card neutral"><span>Fournisseurs</span><strong id="metricFournisseurs">0</strong><small>Référencés</small></article>
+    </section>
+
+    <section class="card" id="composantsSection">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Magasin</p>
+          <h2>Composants</h2>
+        </div>
+        <div class="view-toggle no-print">
+          <button id="viewMagasinCardsButton" type="button" class="active">Cartes</button>
+          <button id="viewMagasinTableButton" type="button">Tableau</button>
+        </div>
+      </div>
+
+      <div class="filters no-print">
+        <input id="magasinSearchInput" type="search" placeholder="Rechercher code, nom, catégorie, fournisseur...">
+        <select id="magasinStatutFilter">
+          <option value="">Tous les statuts</option>
+          <option value="En stock">En stock</option>
+          <option value="Stock faible">Stock faible</option>
+          <option value="Rupture">Rupture</option>
+          <option value="À commander">À commander</option>
+          <option value="Archivé">Archivé</option>
+        </select>
+        <select id="magasinCategorieFilter"><option value="">Toutes les catégories</option></select>
+        <select id="magasinEmplacementFilter"><option value="">Tous les emplacements</option></select>
+      </div>
+
+      <div id="magasinCardsView" class="component-card-grid"></div>
+
+      <div id="magasinTableView" class="table-container" hidden>
+        <table class="dense-table">
+          <thead>
+            <tr>
+              <th>Code</th>
+              <th>Nom</th>
+              <th>Catégorie</th>
+              <th>Emplacement</th>
+              <th>Qté</th>
+              <th>Statut</th>
+              <th>Fournisseur</th>
+              <th>Réf.</th>
+              <th>Commentaire</th>
+            </tr>
+          </thead>
+          <tbody id="magasinBody">
+            <tr><td colspan="9">Aucune donnée chargée.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="card no-print">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Référentiels magasin</p>
+          <h2>Catégories, emplacements, fournisseurs</h2>
+        </div>
+      </div>
+      <div class="admin-ref-grid">
+        <div>
+          <h3>Catégories</h3>
+          <div class="reference-list" id="categoriesList">Non chargé.</div>
+        </div>
+        <div>
+          <h3>Emplacements magasin</h3>
+          <div class="reference-list" id="emplacementsMagasinList">Non chargé.</div>
+        </div>
+        <div>
+          <h3>Fournisseurs</h3>
+          <div class="reference-list" id="fournisseursList">Non chargé.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card debug-card no-print">
+      <h2>Réponse brute JSON</h2>
+      <pre id="magasinRawJson">Aucune réponse pour le moment.</pre>
+    </section>
+  </main>
+
+  <script src="magasin.js?v=122"></script>
+</body>
+</html>

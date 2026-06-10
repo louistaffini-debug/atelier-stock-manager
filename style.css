@@ -540,3 +540,98 @@ summary { cursor: pointer; color: var(--muted); font-weight: 800; }
   .qr-card { background: white; color: black; border: 1px solid #ddd; }
   .print-only { display: block; }
 }
+
+
+/* ==========================
+   Module Magasin / Composants - V1.2.2
+   ========================== */
+.component-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  margin-top: 18px;
+}
+.component-card {
+  padding: 0;
+  overflow: hidden;
+  border-style: solid;
+  background: linear-gradient(180deg, rgba(42,46,73,.96), rgba(23,26,49,.92));
+}
+.component-visual {
+  display: grid;
+  place-items: center;
+  min-height: 130px;
+  background: radial-gradient(circle at top left, rgba(79,124,255,.25), transparent 24rem), rgba(255,255,255,.06);
+}
+.component-visual img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  display: block;
+}
+.component-placeholder {
+  width: 112px;
+  height: 88px;
+  margin: 0;
+  font-size: 30px;
+  background: linear-gradient(135deg, rgba(255,255,255,.98), rgba(220,226,255,.92));
+}
+.component-card-body { padding: 15px; }
+.stock-quantity {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 4px 0 10px;
+  padding: 8px 11px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.08);
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: -.03em;
+}
+.stock-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 9px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 900;
+  white-space: nowrap;
+  border: 1px solid rgba(255,255,255,.12);
+}
+.stock-en-stock { background: rgba(87,214,141,.18); color: var(--green); }
+.stock-faible { background: rgba(255,209,102,.18); color: var(--yellow); }
+.stock-rupture { background: rgba(255,107,122,.20); color: var(--red); }
+.stock-commande { background: rgba(255,180,84,.20); color: var(--orange); }
+.stock-archive { background: rgba(154,163,178,.18); color: var(--gray); }
+.stock-neutre { background: rgba(255,255,255,.10); color: var(--muted); }
+.empty-state {
+  grid-column: 1 / -1;
+  padding: 22px;
+  border-radius: 18px;
+  background: rgba(255,255,255,.06);
+  border: 1px dashed rgba(255,255,255,.18);
+}
+.reference-list {
+  display: grid;
+  gap: 8px;
+  margin-top: 10px;
+}
+.reference-chip {
+  display: grid;
+  gap: 4px;
+  padding: 10px 12px;
+  border-radius: 13px;
+  background: rgba(255,255,255,.06);
+  border: 1px solid var(--line);
+}
+.reference-chip span {
+  color: var(--muted);
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+@media (max-width: 760px) {
+  .component-card-grid { grid-template-columns: 1fr; }
+  .stock-quantity { font-size: 18px; }
+}
